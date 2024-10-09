@@ -19,6 +19,9 @@ public class RetryDemoApplication {
         SpringApplication.run(RetryDemoApplication.class, args);
     }
 
+    /**
+     * 몇 번 재시도 했는지에 대한 로그 출력용 Consumer
+     */
     @Bean
     public RegistryEventConsumer<Retry> myRegistryEventConsumer() {
 

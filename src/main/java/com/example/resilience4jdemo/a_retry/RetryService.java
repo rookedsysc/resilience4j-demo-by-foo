@@ -12,11 +12,12 @@ public class RetryService {
 
     private static final String SIMPLE_RETRY_CONFIG = "simpleRetryConfig";
 
-    @Retry(name = SIMPLE_RETRY_CONFIG, fallbackMethod = "fallback")
+    @Retry(name = SIMPLE_RETRY_CONFIG, fallbackMethod = "fallback"/* retry 실패시 사용할 메서드 지정 */)
     public String process(String param) {
         return callAnotherServer(param);
     }
 
+    // retry에 실패하면 이 메서드가 실행이 됨
     private String fallback(String param, Exception ex) {
         // retry에 전부 실패해야 fallback이 실행
         log.info("fallback! your request is " + param);
